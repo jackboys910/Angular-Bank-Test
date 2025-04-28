@@ -1,3 +1,40 @@
+:root {
+  --color-primary: #1976d2;
+  --color-primary-light: #f7fafd;
+  --color-error: #d32f2f;
+  --color-error-light: #ffebee;
+  --color-border: #e0e0e0;
+  --color-scrollbar-thumb: #ccc;
+  --color-scrollbar-thumb-hover: #888;
+  --color-shadow: #1976d20d;
+
+  --spacing-tiny: -10px;
+  --spacing-extra-tiny: -2px;
+  --spacing-zero: 0;
+  --spacing-small: 8px;
+  --spacing-extra-small: 10px;
+  --spacing-medium: 12px;
+  --spacing-extra-medium: 16px;
+  --spacing-large: 20px;
+  --spacing-extra-large: 24px;
+  --spacing-xxx-extra-large: 32px;
+
+  --border-radius-small: 10px;
+  --border-radius-medium: 14px;
+
+  --grid-gap-medium: 16px;
+
+  --box-shadow-zero: 0;
+  --box-shadow-small: 2px;
+  --box-shadow-medium: 12px;
+
+  --font-size-medium: 1.15rem;
+
+  --font-weight-semi-bold: 600;
+
+  --letter-spacing-small: 0.02em;
+}
+
 html,
 body {
   height: 100%;
@@ -5,5 +42,5 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
