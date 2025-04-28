@@ -1,0 +1,77 @@
+<mat-card class="card">
+  <h2 class="card__title">Адрес регистрации</h2>
+
+  <div class="card__grid" [formGroup]="group">
+    <mat-form-field appearance="outline">
+      <mat-label>Страна</mat-label>
+      <mat-select formControlName="country">
+        <mat-option *ngFor="let c of countries" [value]="c.value">{{
+          c.label
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="group.get('country')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Регион</mat-label>
+      <input matInput formControlName="region" />
+      <mat-error *ngIf="group.get('region')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+      <mat-error *ngIf="group.get('region')?.hasError('minlength')">
+        Минимум 3 символа
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Город</mat-label>
+      <input matInput formControlName="city" />
+      <mat-error *ngIf="group.get('city')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+      <mat-error *ngIf="group.get('city')?.hasError('minlength')">
+        Минимум 3 символа
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Улица</mat-label>
+      <input matInput formControlName="street" />
+      <mat-error *ngIf="group.get('street')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+      <mat-error *ngIf="group.get('street')?.hasError('minlength')">
+        Минимум 3 символа
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Дом</mat-label>
+      <input matInput formControlName="house" />
+      <mat-error *ngIf="group.get('house')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Квартира</mat-label>
+      <input matInput formControlName="apartment" />
+      <mat-error *ngIf="group.get('apartment')?.hasError('pattern')">
+        Только цифры
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Индекс</mat-label>
+      <input matInput formControlName="postalCode" maxlength="6" />
+      <mat-error *ngIf="group.get('postalCode')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+      <mat-error *ngIf="group.get('postalCode')?.hasError('pattern')">
+        Должно быть 6 цифр
+      </mat-error>
+    </mat-form-field>
+  </div>
+</mat-card>
