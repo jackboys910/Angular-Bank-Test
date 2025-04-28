@@ -6,7 +6,6 @@ import { FormComponent } from './features/form/form.component';
   standalone: true,
   imports: [FormComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'AngularBankForm';
