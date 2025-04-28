@@ -1,0 +1,51 @@
+<mat-card class="card">
+  <h2 class="card__title">Банковские реквизиты</h2>
+
+  <div class="card__grid" [formGroup]="group">
+    <mat-form-field appearance="outline">
+      <mat-label>Номер счета</mat-label>
+      <input matInput formControlName="accountNumber" maxlength="20" />
+      <mat-error *ngIf="group.get('accountNumber')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+      <mat-error *ngIf="group.get('accountNumber')?.hasError('pattern')">
+        Должно быть 20 цифр
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>БИК банка</mat-label>
+      <input matInput formControlName="bic" maxlength="9" />
+      <mat-error *ngIf="group.get('bic')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+      <mat-error *ngIf="group.get('bic')?.hasError('pattern')">
+        Должно быть 9 цифр
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Наименование банка</mat-label>
+      <input matInput formControlName="bankName" />
+      <mat-error *ngIf="group.get('bankName')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+      <mat-error *ngIf="group.get('bankName')?.hasError('minlength')">
+        Минимум 3 символа
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Корреспондентский счет</mat-label>
+      <input matInput formControlName="correspondentAccount" maxlength="20" />
+      <mat-error
+        *ngIf="group.get('correspondentAccount')?.hasError('required')"
+      >
+        Обязательное поле
+      </mat-error>
+      <mat-error *ngIf="group.get('correspondentAccount')?.hasError('pattern')">
+        Должно быть 20 цифр
+      </mat-error>
+    </mat-form-field>
+  </div>
+</mat-card>

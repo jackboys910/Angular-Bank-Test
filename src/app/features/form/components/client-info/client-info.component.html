@@ -1,0 +1,105 @@
+<mat-card class="card">
+  <h2 class="card__title">Данные клиента</h2>
+
+  <div class="card__grid" [formGroup]="group">
+    <mat-form-field appearance="outline">
+      <mat-label>Имя</mat-label>
+      <input matInput formControlName="firstName" />
+      <mat-error *ngIf="group.get('firstName')?.hasError('required')">
+        Имя обязательно
+      </mat-error>
+      <mat-error *ngIf="group.get('firstName')?.hasError('minlength')">
+        Минимум 2 символа
+      </mat-error>
+      <mat-error *ngIf="group.get('firstName')?.hasError('maxlength')">
+        Максимум 50 символов
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Фамилия</mat-label>
+      <input matInput formControlName="lastName" />
+      <mat-error *ngIf="group.get('lastName')?.hasError('required')">
+        Фамилия обязательна
+      </mat-error>
+      <mat-error *ngIf="group.get('lastName')?.hasError('minlength')">
+        Минимум 2 символа
+      </mat-error>
+      <mat-error *ngIf="group.get('lastName')?.hasError('maxlength')">
+        Максимум 50 символов
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Отчество</mat-label>
+      <input matInput formControlName="middleName" />
+      <mat-error *ngIf="group.get('middleName')?.hasError('minlength')">
+        Минимум 2 символа
+      </mat-error>
+      <mat-error *ngIf="group.get('middleName')?.hasError('maxlength')">
+        Максимум 50 символов
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Пол</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option value="male">Мужской</mat-option>
+        <mat-option value="female">Женский</mat-option>
+      </mat-select>
+      <mat-error *ngIf="group.get('gender')?.hasError('required')">
+        Пол обязателен
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Дата рождения</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthDate" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="group.get('birthDate')?.hasError('required')">
+        Дата рождения обязательна
+      </mat-error>
+      <mat-error *ngIf="group.get('birthDate')?.hasError('ageInvalid')">
+        Возраст должен быть больше 18 лет
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error *ngIf="group.get('email')?.hasError('required')">
+        Email обязателен
+      </mat-error>
+      <mat-error *ngIf="group.get('email')?.hasError('email')">
+        Неверный формат email
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Телефон</mat-label>
+      <input
+        matInput
+        formControlName="phone"
+        placeholder="+7 (XXX) XXX-XX-XX"
+      />
+      <mat-error *ngIf="group.get('phone')?.hasError('required')">
+        Телефон обязателен
+      </mat-error>
+      <mat-error *ngIf="group.get('phone')?.hasError('phoneInvalid')">
+        Не удовлетворяет формату: +7 (XXX) XXX-XX-XX или +375 (XX) XXX-XX-XX
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Серия и номер паспорта</mat-label>
+      <input matInput formControlName="passport" placeholder="XXXX XXXXXX" />
+      <mat-error *ngIf="group.get('passport')?.hasError('required')">
+        Паспорт обязателен
+      </mat-error>
+      <mat-error *ngIf="group.get('passport')?.hasError('passportInvalid')">
+        Не удовлетворяет формату: XXXX XXXXXX, где X — цифры
+      </mat-error>
+    </mat-form-field>
+  </div>
+</mat-card>
