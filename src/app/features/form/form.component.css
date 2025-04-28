@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  max-width: 820px;
+  margin: var(--spacing-zero) auto;
+  padding: var(--spacing-extra-medium) var(--spacing-zero);
+}
+
+.form__block {
+  margin-bottom: var(--spacing-xxx-extra-large);
+  background: var(--color-primary-light);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--box-shadow-zero) var(--box-shadow-small)
+    var(--box-shadow-medium) var(--color-shadow);
+  padding: var(--spacing-extra-large) var(--spacing-large) var(--spacing-medium)
+    var(--spacing-large);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gap-medium);
+}

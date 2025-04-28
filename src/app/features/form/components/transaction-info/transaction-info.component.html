@@ -1,0 +1,54 @@
+<mat-card class="card">
+  <h2 class="card__title">Информация о транзакции</h2>
+
+  <div class="card__grid" [formGroup]="group">
+    <mat-form-field appearance="outline">
+      <mat-label>Тип транзакции</mat-label>
+      <mat-select formControlName="transactionType">
+        <mat-option *ngFor="let t of transactionTypes" [value]="t.value">{{
+          t.label
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="group.get('transactionType')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Сумма</mat-label>
+      <input matInput formControlName="amount" />
+      <mat-error *ngIf="group.get('amount')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+      <mat-error *ngIf="group.get('amount')?.hasError('min')">
+        Сумма должна быть больше 0
+      </mat-error>
+      <mat-error *ngIf="group.get('amount')?.hasError('pattern')">
+        Только цифры
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Валюта</mat-label>
+      <mat-select formControlName="currency">
+        <mat-option *ngFor="let c of currencies" [value]="c.value">{{
+          c.label
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="group.get('currency')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Комментарий</mat-label>
+      <textarea matInput formControlName="comment" maxlength="200"></textarea>
+      <mat-hint align="end"
+        >{{ group.get("comment")?.value?.length || 0 }}/200</mat-hint
+      >
+      <mat-error *ngIf="group.get('comment')?.hasError('maxlength')">
+        Максимум 200 символов
+      </mat-error>
+    </mat-form-field>
+  </div>
+</mat-card>

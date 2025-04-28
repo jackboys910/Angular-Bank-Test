@@ -1,0 +1,36 @@
+<h1>Форма создания банковской транзакции</h1>
+<form class="form" [formGroup]="form" (ngSubmit)="submit()">
+  <div formGroupName="clientInfo" class="form__block">
+    <app-client-info [group]="clientInfoGroup"></app-client-info>
+  </div>
+
+  <div formGroupName="address" class="form__block">
+    <app-address-info [group]="addressGroup"></app-address-info>
+  </div>
+
+  <div formGroupName="bankDetails" class="form__block">
+    <app-bank-details-info [group]="bankDetailsGroup"></app-bank-details-info>
+  </div>
+
+  <div formGroupName="transactionInfo" class="form__block">
+    <app-transaction-info [group]="transactionInfoGroup"></app-transaction-info>
+  </div>
+
+  <div formGroupName="documents" class="form__block">
+    <app-documents-info [formArray]="documents"></app-documents-info>
+  </div>
+
+  <div class="form-actions" class="form__block">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      Отправить
+    </button>
+    <button mat-stroked-button color="primary" type="button" (click)="reset()">
+      Очистить
+    </button>
+  </div>
+</form>
