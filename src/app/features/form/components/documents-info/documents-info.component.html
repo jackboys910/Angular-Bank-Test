@@ -1,0 +1,96 @@
+<mat-card class="card">
+  <h2 class="card__title">Дополнительные документы</h2>
+
+  <div class="card__grid" [formGroup]="$any(formArray.parent)">
+    <div formArrayName="documents">
+      <ng-container *ngIf="formGroups.length > 0">
+        <div
+          class="document__row"
+          *ngFor="let group of formGroups; let i = index"
+          [formGroupName]="i"
+        >
+          <mat-form-field appearance="outline">
+            <mat-label>Тип документа</mat-label>
+            <mat-select formControlName="documentType">
+              <mat-option *ngFor="let t of documentTypes" [value]="t.value">{{
+                t.label
+              }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="group.get('documentType')?.invalid">
+              Тип документа обязателен
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Номер документа</mat-label>
+            <input matInput formControlName="documentNumber" />
+            <mat-error
+              *ngIf="group.get('documentNumber')?.hasError('required')"
+            >
+              Номер документа обязателен
+            </mat-error>
+            <mat-error
+              *ngIf="group.get('documentNumber')?.hasError('countryRequired')"
+            >
+              Выберите страну
+            </mat-error>
+            <mat-error
+              *ngIf="
+                group.get('documentNumber')?.hasError('documentTypeRequired')
+              "
+            >
+              Выберите тип документа
+            </mat-error>
+            <mat-error
+              *ngIf="
+                group.get('documentNumber')?.hasError('documentNumberInvalid')
+              "
+            >
+              {{ group.get('documentNumber')?.errors?.['documentNumberInvalid'] }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Дата выдачи</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="issueDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="group.get('issueDate')?.invalid">
+              Дата выдачи обязательна
+            </mat-error>
+            <mat-error *ngIf="group.get('issueDate')?.hasError('futureDate')">
+              {{ group.get('issueDate')?.errors?.['futureDate'] }}
+            </mat-error>
+          </mat-form-field>
+
+          <button
+            type="button"
+            class="document__row-button"
+            mat-icon-button
+            (click)="removeDocument(i)"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+
+        <hr />
+      </ng-container>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="addDocument()"
+      >
+        Добавить документ
+      </button>
+    </div>
+  </div>
+</mat-card>

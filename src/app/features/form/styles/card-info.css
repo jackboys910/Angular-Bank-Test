@@ -1,0 +1,31 @@
+.card {
+  background: var(--color-primary-light);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--box-shadow-zero) var(--box-shadow-small)
+    var(--box-shadow-medium) var(--color-shadow);
+  padding: var(--spacing-extra-large) var(--spacing-large) var(--spacing-medium)
+    var(--spacing-large);
+  border: none;
+  margin-bottom: var(--spacing-xxx-extra-large);
+}
+
+.card__title {
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-semi-bold);
+  margin-bottom: var(--spacing-extra-medium);
+  margin-top: var(--spacing-zero);
+  color: var(--color-primary);
+  letter-spacing: var(--letter-spacing-small);
+}
+
+.card__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--grid-gap-medium);
+}
+
+mat-error {
+  position: relative;
+  margin-left: var(--spacing-tiny);
+  margin-top: var(--spacing-extra-tiny);
+}
